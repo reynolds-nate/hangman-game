@@ -6,6 +6,9 @@ wordList = f.read().splitlines()
 f2 = open('alphabet.txt')
 alphabet = f2.read().splitlines()
 
+for i in alphabet:
+    alphabet[i]=upper(alphabet[i])
+
 guessPartial=""
 numGuess=0
 guessedLetters = []
@@ -25,24 +28,23 @@ def selectWord(list):
 ##def printBoard(numGuesses, guessPartial):
 
 def getLetter():
-     while True:
+
+    while True:
         letter = input('Enter a letter:').upper()
         try:
-            (letter.isalpha && ((len(letter))==1) && (guessedLetters.find(letter)==-1))
+            ((letter.isalpha)and((len(letter))==1)and not(letter in guessedLetters)
+        
         except:
-            if(!(letter.isalpha && ((len(letter))==1))):
+            if letter.isalpha==False and len(letter) is not 1:
                 print('Please enter a letter A-Z.')
-            if(!(guessedLetters.find(letter)==-1)):
+            if (guessedLetters.find(letter) is not -1):
                 print("You've already guessed that letter.")
             continue
     
         break
+
+    return letter
  
-
-
-
-def gameMenu()
-
 
 
 print("Hello, and Welcome to Hangman.")
@@ -61,7 +63,7 @@ while True:
         print("Your word is "+str(len(genWord))+" long.")
         print("You have guessed "+ str(numGuess+1) + " times and your progress is ")
 
-        option = input("Guess a Letter.")
+        option = getLetter()
         guessedLetters.append(option)
         
         print(guessedLetters[numGuess])
