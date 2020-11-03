@@ -8,6 +8,7 @@ alphabet = f2.read().splitlines()
 
 guessPartial=""
 numGuess=0
+guessedLetters = []
 
 for x in range(26):
     print(alphabet[x])
@@ -21,7 +22,26 @@ def selectWord(list):
 
     return word
 
-##def printBoard():
+##def printBoard(numGuesses, guessPartial):
+
+def getLetter():
+     while True:
+        letter = input('Enter a letter:').upper()
+        try:
+            (letter.isalpha && ((len(letter))==1) && (guessedLetters.find(letter)==-1))
+        except:
+            if(!(letter.isalpha && ((len(letter))==1))):
+                print('Please enter a letter A-Z.')
+            if(!(guessedLetters.find(letter)==-1)):
+                print("You've already guessed that letter.")
+            continue
+    
+        break
+ 
+
+
+
+def gameMenu()
 
 
 
@@ -39,9 +59,20 @@ while True:
 
     while True:
         print("Your word is "+str(len(genWord))+" long.")
-        print("You have guessed "+ str(numGuess) + " times and your progress is ")
+        print("You have guessed "+ str(numGuess+1) + " times and your progress is ")
 
-        option = ("Guess a Letter.")
+        option = input("Guess a Letter.")
+        guessedLetters.append(option)
+        
+        print(guessedLetters[numGuess])
+
+
+
+
+
+
+
+
         break
 
 
