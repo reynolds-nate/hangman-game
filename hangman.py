@@ -6,12 +6,13 @@ wordList = f.read().splitlines()
 f2 = open('alphabet.txt')
 alphabet = f2.read().splitlines()
 
-for i in alphabet:
-    alphabet[i]=upper(alphabet[i])
+for i in range(26):
+    alphabet[i] = alphabet[i].upper()
 
-guessPartial=""
-numGuess=0
-guessedLetters = []
+guessPartial="" #partial guess of the word, with the letters in position
+numGuess=0 #number of guesses made
+guessedLetters = [] #letters that have been guessed
+currentGuess="" #the current letter being guessed
 
 for x in range(26):
     print(alphabet[x])
@@ -24,85 +25,14 @@ def selectWord(list):
     word = list[randint(0,(len(list)-1))]
 
     return word
-
-##def printBoard(numGuesses, guessPartial):
-
-def getLetter():
-
-    while True:
-        letter = input('Enter a letter:').upper()
-        try:
-            ((letter.isalpha)and((len(letter))==1)and not(letter in guessedLetters)
-        
-        except:
-            if letter.isalpha==False and len(letter) is not 1:
-                print('Please enter a letter A-Z.')
-            if (guessedLetters.find(letter) is not -1):
-                print("You've already guessed that letter.")
-            continue
     
-        break
-
-    return letter
- 
-
-
-print("Hello, and Welcome to Hangman.")
-
-while True:
-    
-    genWord=selectWord(wordList)
-
-    
-    guessPartial="_ "* len(genWord)
-
-    print(genWord)
-    print(guessPartial)
-
-    while True:
-        print("Your word is "+str(len(genWord))+" long.")
-        print("You have guessed "+ str(numGuess+1) + " times and your progress is ")
-
-        option = getLetter()
-        guessedLetters.append(option)
-        
-        print(guessedLetters[numGuess])
-
-
-
-
-
-
-
-
-        break
-
-
-
-
-
-
-
-
-
-    exitCon=input("exit? (Y/N)")
+def validLetter(currentGuess): 
    
-   #exit check
-    print(exitCon)
 
-    if exitCon == "Y":
-        break
-
-
+    if (currentGuess.isalpha()) and currentGuess.upper() not in guessedLetters:
+        return True
+    else:
+        return False
 
 
-
-
-
-    
-    
-
-exit
-
-
-
+print(selectWord(wordList))
