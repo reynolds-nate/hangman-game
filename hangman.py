@@ -9,7 +9,6 @@ alphabet = f2.read().splitlines()
 for i in range(26):
     alphabet[i] = alphabet[i].upper()
 
-guessPartial=[] #partial guess of the word, with the letters in position
 numGuess=0 #number of guesses made
 guessedLetters = [] #letters that have been guessed
 currentGuess="" #the current letter being guessed
@@ -40,21 +39,22 @@ def getLetter():
         print("Enter a letter.")
         currentGuess=input()
         if validLetter(currentGuess):
+            guessedLetters[guessNum]=currentGuess
             return currentGuess
 
 
-def currentState():
-    print(guessNum)
-
-secretWord = selectWord(wordList)
+def updatePartial(letter):
+    if letter is in secret:
+        guessPartial[secret.index(letter)]
+        secretWord = selectWord(wordList)
 secret=list(secretWord)
 
 print(secretWord)
 print(secret)
 
 guessNum=0
-playBool= True
-while playBool :
+playing = True
+while playing :
     letter = getLetter()
 
     break
