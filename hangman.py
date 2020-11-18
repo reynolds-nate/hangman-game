@@ -1,4 +1,5 @@
 from random import randint
+
 # Getting a list of letters and words from preset text files
 #all words and letters are put into lists as lowercase
 f = open('hangmanWords.txt')
@@ -11,6 +12,18 @@ alphabet = f2.read().splitlines()
 # Each round the word is displayed (e.g. Word: __mm_t)
 # Guessed letters are unmasked.
 # Hidden letters are shown as underscores.
+
+def wordProgress():
+    for  i in secret:
+        if secret[i] in guessedLetters:
+            progress += str(secret[i])
+            progress += ' '
+        else:
+            progress += '_'
+            progress += ' '
+
+    progress = progress.strip()
+    return progress
 
 #SHOW REMAINING GUESSES
 # Each round display the number of chances remaining.
@@ -37,7 +50,6 @@ alphabet = f2.read().splitlines()
 #GAME OVER WHEN NO MORE CHANCES
 # The game ends when the number of chances remaining reaches zero.
 # The user is alerted that they have run out of guesses
-
 
 
 numGuess=0 #number of guesses made
